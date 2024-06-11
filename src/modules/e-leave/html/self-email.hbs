@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Leave Request Approval</title>
+  <style>
+    @page {
+      size: A5 portrait; /* Set page size to A5 portrait */
+      margin: 0; /* Remove margins */
+    }
+
+    body {
+      font-family: sans-serif;
+      color: #333;
+    }
+
+    table {
+      width: 100%; /* Maintain full width within A5 */
+      border-collapse: collapse;
+      margin: 0 auto;
+      border: 1px solid #ddd;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+
+    th {
+      text-align: left;
+      background-color: #f5f5f5;
+      font-weight: bold;
+    }
+
+    .message {
+      text-align: justify;
+      line-height: 1.5;
+      padding: 15px;
+    }
+
+    .signature {
+      font-style: italic;
+      margin-top: 20px;
+    }
+
+    .disclaimer {
+      font-size: smaller;
+      text-align: center;
+      color: #aaa;
+    }
+    .buttons {
+      text-align: center;
+      margin-top: 15px;
+    }
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer; /* For hover effect */
+      margin-right: 10px;
+    }
+    .btn-success {
+      background-color: #28a745;
+      color: #fff;
+    }
+    .btn-danger {
+      background-color: #dc3545;
+      color: #fff;
+    }
+    .btn:hover { /* Style for hover state */
+      opacity: 0.8; /* Slight transparency on hover */
+    }
+  </style>
+</head>
+<body>
+  <table cellpadding="0" cellspacing="0">
+    <tr>
+      <th colspan="2">Leave Request Approval Succeed</th>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <p class="message">Dear {{employeeName}},</p>
+        <p class="message">We are pleased to inform you that your leave request has been approved!</p>
+        <p class="message">Details of your approved leave are as follows:</p>
+      </td>
+    </tr>
+    <tr>
+      <th>Employee ID:</th>
+      <td>{{employeeId}}</td>
+    </tr>
+    <tr>
+      <th>Name:</th>
+      <td>{{employeeName}}</td>
+    </tr>
+    <tr>
+      <th>Position:</th>
+      <td>{{employeePosition}}</td>
+    </tr>
+    <tr>
+      <th>Department:</th>
+      <td>{{department}}</td>
+    </tr>
+    <tr>
+      <th>Leave Type:</th>
+      <td>{{leaveType}}</td>
+    </tr>
+    <tr>
+      <th>Leave Period:</th>
+      <td>{{startDate}} - {{endDate}}</td>
+    </tr>
+    <tr>
+      <th>Reason:</th>
+      <td>{{reason}}</td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <p class="message">We hope you have a restful and enjoyable leave. Please refer to your company's leave policy for any further information.</p>
+        <p class="signature">Sincerely,</p>
+        <p class="signature">The HR Department</p>
+      </td>
+    </tr>
+  </table>
+  <p class="disclaimer">This message was generated automatically by the E-Leave system.</p>
+</body>
+</html>
