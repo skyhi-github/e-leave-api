@@ -134,7 +134,7 @@ export class MailService {
     const compiled = template(payloadData);
 
     this.mailService.sendMail({
-      to: [`sochea.kha@bowker-gfc.com.kh`],
+      to: [`sochea.kha@bowker-gfc.com.kh`, `sindy.doung@bowker-gfc.com.kh`],
       from: `"E-Leave" <admin@manozagahostinger.online>`,
       cc: [`wama.skyhi@gmail.com`],
       subject: `${user?.first_name} ${user?.last_name} Leave Request`,
