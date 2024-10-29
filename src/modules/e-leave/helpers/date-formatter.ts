@@ -18,6 +18,24 @@ export function dateFormatter (timetamp){
 
 }
 
+export function dateFormatterNoTime (timetamp){
+
+   const date = new Date(timetamp);
+ 
+   const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+ 
+   const day = date.getDay();
+   const hour = date.getHours();
+   const minutes = date.getMinutes().toString().padStart(2, '0');
+ 
+   const formattedDate = date.toLocaleDateString('en-US');
+ 
+   const dateAndTime = `${daysOfWeek[day]} ${formattedDate}`
+ 
+   return dateAndTime;
+
+}
+
 export function excelGetDate (timetamp){
 
 

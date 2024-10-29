@@ -31,17 +31,19 @@ import { TeamController } from './controllers/team.controller';
 import { TeamService } from './services/team.service';
 import { HRController } from './controllers/hr.controller';
 import { HRService } from './services/hr.service';
+import { AttendanceController } from './controllers/attendance.controller';
+import { AttendanceService } from './services/attendance.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([User, LeaveBalance, LeaveApplication, Employee, LeaveTrack, Profile])],
-  providers: [LeaveService, UserService, AuthService, JwtService, EmployeeService,
+  imports: [TypeOrmModule.forFeature([User, LeaveBalance, LeaveApplication, Employee, LeaveTrack, Profile, UserRepository])],
+  providers: [LeaveService, UserService, AuthService, JwtService, EmployeeService, AttendanceService,
     LeaveTrackService, EmployeeRepository, UserRepository, LeaveApplicationRepository,
     DynamicSvgService, FileService, ApprovalService, MailService, LeaveBalanceRepository,
     LeaveTrackRepository, ProfileRepository, ProfileService, TeamService, HRService],
 
   controllers: [LeaveController, AuthController, UserController, HRController,
     ProfileController, EmployeeController, MailController, ApprovalController,
-    RejectController, FileController, TeamController],
+    RejectController, FileController, TeamController, AttendanceController],
 
 })
 export class ELeaveModule {}

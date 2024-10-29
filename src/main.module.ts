@@ -17,17 +17,30 @@ import { MailerModule } from '@nestjs-modules/mailer';
       entities: [join(__dirname, '**/**.entity{.ts,.js}')],
       synchronize: Boolean(process.env.DB_SYNC),
     }),
+    TypeOrmModule.forRoot({
+      name: 'hris',
+      type: 'mssql',
+      host: process.env.HRIS_DB_HOST,
+      port: parseInt(process.env.HRIS_DB_PORT),
+      username: process.env.HRIS_DB_USERNAME,
+      password: process.env.HRIS_DB_PASSWORD,
+      database: process.env.HRIS_DB_DATABASE,
+      synchronize: Boolean(process.env.HRIS_DB_SYNC),
+      extra: {
+        trustServerCertificate: true,
+      }
+    }),
     ELeaveModule,
     MailerModule.forRoot({
       transport: {
-        host: 'smtp.hostinger.com',
-        port: Number('587'),
+        host: process.env.SMTP_HOST,
+        port: parseInt(process.env.SMTP_PORT),
         secure: false,
         debug: true,
         connectionTimeout: 10000,
         auth: {
-          user: 'admin@manozagahostinger.online', // Your email address
-          pass: '@Manozaga0', // Your email password
+          user: process.env.SMTP_USER,
+          pass: process.env.SMTP_PASS,
         },
       },})
   ],

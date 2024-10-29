@@ -3,12 +3,12 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export class LeaveReportParam {
 
-  @ApiProperty({ example: '11-10-2024', required: false })
+  @ApiProperty({ example: '2024-07-01', required: false })
   @IsNotEmpty()
   @IsDateString()
   startDate!: Date;
 
-  @ApiProperty({ example: '20-10-2024', required: false })
+  @ApiProperty({ example: '2024-09-31', required: false })
   @IsOptional()
   @IsDateString()
   endDate?: Date;
