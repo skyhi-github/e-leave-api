@@ -39,7 +39,7 @@ export class UserController {
   }
 
   // @UseGuards(JwtAuthGuard)
-  @ApiOperation({ summary: 'Get An Employee' })
+  @ApiOperation({ summary: 'Update An Employee Password' })
   @ApiParam({ name: 'employee_id', required: true })
   @Patch(':employee_id')
   async updatePassword(@Param() id: EmployeeID ,@Body() password: UpdatePasswordDto): Promise<any> {

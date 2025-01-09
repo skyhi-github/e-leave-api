@@ -33,14 +33,14 @@ import { MailerModule } from '@nestjs-modules/mailer';
     ELeaveModule,
     MailerModule.forRoot({
       transport: {
-        host: process.env.SMTP_HOST,
-        port: parseInt(process.env.SMTP_PORT),
+        host: 'smtp.hostinger.com',
+        port: 587,
         secure: false,
         debug: true,
         connectionTimeout: 10000,
         auth: {
-          user: process.env.SMTP_USER,
-          pass: process.env.SMTP_PASS,
+          user: 'admin@manozagahostinger.online',
+          pass: '@Manozaga0',
         },
       },})
   ],
