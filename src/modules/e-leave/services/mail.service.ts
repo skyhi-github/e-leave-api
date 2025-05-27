@@ -60,8 +60,58 @@ export class MailService {
     this.mailService.sendMail({
       to: `${data?.managerEmail}`,
       from: `"E-Leave" <admin@manozagahostinger.online>`,
-      cc: [`wama.skyhi@gmail.com`],
+      cc: [""],
       subject: `${mailPayload?.employeeName} Leave Request`,
+      html: compiled,
+    })
+    .then((res:any) => {
+      console.log(res)
+    })
+    .catch((err:any) => {
+      console.log('Error ',err)
+    });
+
+    return compiled;
+  }
+
+  async manualMailManager(hash_id) {
+
+    const leave = await this.LeaveApplicationRepository.$findOne('hash_id', '93EZ36Z');
+    console.log(leave);
+
+    const filePath = './src/modules/e-leave/html/manager-email.hbs';
+    const html = readFileSync(filePath, 'utf-8');
+    const template = Handlebars.compile(html);
+
+    const data = {
+      managerEmail: 'chandy.pen@bowker-gfc.com.kh',
+      managerName: 'Chandy Pen',
+      approver: 'F00168',
+      managerId: 'F00168',
+      employeeId: 'CE0087', 
+      employeeName: 'Kimsoeung Ren',
+      employeePosition: 'Senior Supervisor',
+      employeeEmail: 'kimsoeung.ren@bowker-gfc.com.kh',
+      department: 'MIS',
+      leaveType: 'Annual Leave',
+      startDate: 'Mon 2/17/2025 7:00 AM',
+      endDate:  'Mon 2/17/2025 4:00 PM',
+      duration: leave,
+      backToWork: leave,
+      reason: 'Accompanying Mother to the hospital',
+      hash_id: hash_id,
+      link: `http://10.96.100.26:4000/approve/${leave?.id}`,
+      reject_link: `http://10.96.100.26:4000/reject/${leave?.id}`,
+      createdAt: 'Sat 2/15/2025 8:51 AM'
+    };
+
+    const compiled = template(data);
+
+    this.mailService.sendMail({
+      to: `chandy.pen@bowker-gfc.com.kh`,
+      from: `"E-Leave" <admin@manozagahostinger.online>`,
+      cc: [],
+      subject: `Kimsoeung Ren Leave Request`,
       html: compiled,
     })
     .then((res:any) => {
@@ -194,7 +244,7 @@ export class MailService {
     this.mailService.sendMail({
       to: `${data?.employeeEmail}`,
       from: `"Leave Approved" <admin@manozagahostinger.online>`,
-      cc: [`wama.skyhi@gmail.com`],
+      cc: [],
       subject: `Leave Request Approved`,
       html: compiled,
       attachments: [
@@ -213,6 +263,10 @@ export class MailService {
     });
 
     return compiled;
+  }
+
+  async sendMailNotify(id: any) {
+
   }
 
   async fileCreator(leaveId: any) {
