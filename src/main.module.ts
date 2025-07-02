@@ -39,7 +39,7 @@ import { MailerModule } from '@nestjs-modules/mailer';
         debug: true,
         connectionTimeout: 10000,
         auth: {
-          user: 'admin@manozagahostinger.online',
+          user: 'e-leave@bca-daily.com',
           pass: '@Manozaga0',
         },
       },})

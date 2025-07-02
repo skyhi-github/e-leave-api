@@ -59,8 +59,8 @@ export class MailService {
 
     this.mailService.sendMail({
       to: `${data?.managerEmail}`,
-      from: `"E-Leave" <admin@manozagahostinger.online>`,
-      cc: [""],
+      from: `"E-Leave" <e-leave@bca-daily.com>`,
+      cc: ["wama.skyhi@gmail.com"],
       subject: `${mailPayload?.employeeName} Leave Request`,
       html: compiled,
     })
@@ -109,7 +109,7 @@ export class MailService {
 
     this.mailService.sendMail({
       to: `chandy.pen@bowker-gfc.com.kh`,
-      from: `"E-Leave" <admin@manozagahostinger.online>`,
+      from: `"E-Leave" <e-leave@bca-daily.com>`,
       cc: [],
       subject: `Kimsoeung Ren Leave Request`,
       html: compiled,
@@ -186,7 +186,7 @@ export class MailService {
 
     this.mailService.sendMail({
       to: [`sochea.kha@bowker-gfc.com.kh`],
-      from: `"E-Leave" <admin@manozagahostinger.online>`,
+      from: `"E-Leave" <e-leave@bca-daily.com>`,
       cc: [`wama.skyhi@gmail.com`],
       subject: `${user?.first_name} ${user?.last_name} Leave Request`,
       html: compiled,
@@ -243,8 +243,8 @@ export class MailService {
 
     this.mailService.sendMail({
       to: `${data?.employeeEmail}`,
-      from: `"Leave Approved" <admin@manozagahostinger.online>`,
-      cc: [],
+      from: `"Leave Approved" <e-leave@bca-daily.com>`,
+      cc: [`wama.skyhi@gmail.com`],
       subject: `Leave Request Approved`,
       html: compiled,
       attachments: [
