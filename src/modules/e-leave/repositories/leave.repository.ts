@@ -10,28 +10,15 @@ export class LeaveApplicationRepository {
     private readonly LeaveApplicationRepository: Repository<LeaveApplication>,
   ) {}
 
-  async $insert(data: object): Promise<LeaveApplication | undefined> {
-
+  async $insert(data: Partial<LeaveApplication>): Promise<LeaveApplication> {
     try {
-      const queryBuilder = this.LeaveApplicationRepository.createQueryBuilder('leave_application');
-  
-      const insertValues: { [key: string]: any } = {};
-      for (const key in data) {
-        if (data.hasOwnProperty(key)) {
-          insertValues[key] = data[key];
-        }
-      }
-
-      queryBuilder.insert().into('leave_application').values(insertValues).execute();
-
-      const savedEntity = await queryBuilder.getOne();
+      const savedEntity = await this.LeaveApplicationRepository.save(data);
       return savedEntity;
     } catch (error) {
       console.error('Error saving to SQL:', error);
-      return undefined;
+      throw error;
     }
-  
-  }  
+  }
 
   async $findOne<K extends keyof LeaveApplication>(key: K, value: LeaveApplication[K]): Promise<LeaveApplication | undefined> {
     const queryBuilder = this.LeaveApplicationRepository.createQueryBuilder('leave_application');

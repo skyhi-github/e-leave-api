@@ -53,6 +53,10 @@ import {
     approver_id: string;
 
     @Index()
+    @Column({ type: 'varchar', name: 'hris_leave_note_no', length: 50, nullable: true })
+    hris_leave_note_no: string;
+
+    @Index()
     @CreateDateColumn({ type: 'timestamp', name: 'create_at', nullable: true })
     created_at: Date;
 

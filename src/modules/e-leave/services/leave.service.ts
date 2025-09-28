@@ -11,6 +11,7 @@ import { LeaveTrackRepository } from '../repositories/leave-track.repository';
 import { dateFormatter } from '../helpers/date-formatter';
 import { generateRandomString } from '../helpers/hash-generator'
 import { LeaveTrackService } from './leave_track.service';
+import { HRISService } from './hris_leave.service';
 import 'dotenv/config';
 
 @Injectable()
@@ -23,7 +24,8 @@ export class LeaveService {
     private readonly jwtService: JwtService,
     private readonly leaveBalanceRepository: LeaveBalanceRepository,
     private readonly LeaveTrackRepository: LeaveTrackRepository,
-    private readonly leaveTrackService: LeaveTrackService
+    private readonly leaveTrackService: LeaveTrackService,
+    private readonly HRISService: HRISService
 
   ){}
 
@@ -89,7 +91,7 @@ export class LeaveService {
     return leaveBalance;
   }
 
-  async create(body: CreateLeaveApplicationDto): Promise<LeaveApplication> {
+  async create(body: CreateLeaveApplicationDto) {
 
     const newLeave = new LeaveApplication();
 
@@ -105,6 +107,7 @@ export class LeaveService {
     newLeave.status = 'Application Created'
 
     const leave = await this.leaveApplicationRepository.$insert(newLeave);
+    this.HRISService.createLeaveApplication(leave);
     await this.leaveTrackService.create(newLeave);
 
 
@@ -118,9 +121,9 @@ export class LeaveService {
 
     }
 
-    const leaveMailPayload = await this.mailPayloadMaker(payload);
+    // const leaveMailPayload = await this.mailPayloadMaker(payload);
 
-    await this.mailService.sendMailManager(leaveMailPayload);
+    // await this.mailService.sendMailManager(leaveMailPayload);
 
     return leave;
   }

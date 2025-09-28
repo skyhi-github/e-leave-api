@@ -7,6 +7,13 @@ import { MailService } from '../services/mail.service';
 export class MailController {
   constructor(private readonly mailService: MailService) {}
 
+  @ApiOperation({ summary: 'Manual Send Mail To Manager' })
+  @ApiParam({ name: 'hash_id', required: true })
+  @Post('leave_id/:hash_id')
+  manualMailToManager(@Param() hash_id){ 
+    return this.mailService.manualMailManager(hash_id);
+  }
+
   @ApiOperation({ summary: 'Send Email To Manager' })
   @ApiParam({ name: 'email', required: true })
   @Post('manager/:email')

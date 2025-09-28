@@ -33,17 +33,19 @@ import { HRController } from './controllers/hr.controller';
 import { HRService } from './services/hr.service';
 import { AttendanceController } from './controllers/attendance.controller';
 import { AttendanceService } from './services/attendance.service';
+import { HRISService } from './services/hris_leave.service';
+import { HRISController } from './controllers/hris.controller';
 
 @Module({
   imports: [TypeOrmModule.forFeature([User, LeaveBalance, LeaveApplication, Employee, LeaveTrack, Profile, UserRepository])],
   providers: [LeaveService, UserService, AuthService, JwtService, EmployeeService, AttendanceService,
     LeaveTrackService, EmployeeRepository, UserRepository, LeaveApplicationRepository,
     DynamicSvgService, FileService, ApprovalService, MailService, LeaveBalanceRepository,
-    LeaveTrackRepository, ProfileRepository, ProfileService, TeamService, HRService],
+    LeaveTrackRepository, ProfileRepository, ProfileService, TeamService, HRService, HRISService],
 
   controllers: [LeaveController, AuthController, UserController, HRController,
     ProfileController, EmployeeController, MailController, ApprovalController,
-    RejectController, FileController, TeamController, AttendanceController],
+    RejectController, FileController, TeamController, AttendanceController, HRISController],
 
 })
 export class ELeaveModule {}

@@ -12,12 +12,12 @@ export class CreateLeaveApplicationDto {
   @IsNotEmpty()
   department_name?: string;
 
-  @ApiProperty({ example: '2024-06-11' })
+  @ApiProperty({ example: '2026-06-11' })
   @IsString()
   @IsNotEmpty()
   start_date?: Date;
 
-  @ApiProperty({ example: '2024-06-12' })
+  @ApiProperty({ example: '2026-06-12' })
   @IsString()
   @IsNotEmpty()
   end_date?: Date;
@@ -32,7 +32,7 @@ export class CreateLeaveApplicationDto {
   @IsNotEmpty()
   duration?: string;
 
-  @ApiProperty({ example: '2024-06-15' })
+  @ApiProperty({ example: '2026-06-15' })
   @IsString()
   @IsNotEmpty()
   back_to_work_date?: Date;

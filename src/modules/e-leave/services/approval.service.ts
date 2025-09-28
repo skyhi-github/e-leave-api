@@ -3,6 +3,7 @@ import { readFileSync } from 'fs';
 import { LeaveApplicationRepository } from '../repositories/leave.repository';
 import { MailService } from './mail.service';
 import { LeaveTrackService } from './leave_track.service';
+import { HRISService } from './hris_leave.service';
 
 @Injectable()
 export class ApprovalService {
@@ -12,6 +13,7 @@ export class ApprovalService {
                 @Inject(forwardRef(() => MailService))
                 private readonly mailService: MailService,
                 private readonly LeaveTrackService: LeaveTrackService,
+                private readonly HRISService: HRISService
     ){}
 
     async reject(id: any) {
@@ -83,6 +85,7 @@ export class ApprovalService {
             html = readFileSync(hrHTMLfilePath, 'utf-8');
             leave.status = 'HR Approved'
             leave.save();
+            this.HRISService.createLeaveApplication(leave);
             await this.LeaveTrackService.create(leave);
             await this.mailService.sendMailBack(id);
             return html;

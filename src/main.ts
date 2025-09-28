@@ -14,8 +14,8 @@ async function bootstrap() {
   });
 
   const config = new DocumentBuilder()
-    .setTitle('E-Leave')
-    .setDescription('E-Leave API')
+    .setTitle('OT')
+    .setDescription('OT API')
     .setVersion('1.0')
     .addSecurity('JWT', {
       type: 'apiKey',
@@ -25,7 +25,7 @@ async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('docs', app, document, { 
-    customSiteTitle: 'E-Leave API',
+    customSiteTitle: 'OT API',
   });
 
   await app.listen(parseInt(process.env.APP_PORT));
